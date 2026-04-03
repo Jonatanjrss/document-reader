@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "document-reader"
+version = "0.0.1"
+description = "Um leitor de documentos em Python para extrair campos, baseado em expressões regulares"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+  { name = "Jonatan Rodrigues da Silva", email = "jonatanjrss@gmail.com" }
+]
+keywords = ["python", "document", "reader", "regex"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+]
+
+dependencies = [
+    "loguru==0.7.3",
+    "pdftotext==3.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/Jonatanjrss/document-reader"
+Issues = "https://github.com/Jonatanjrss/document-reader/issues"
+
+[tool.bumpver]
+current_version = "0.0.1"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "Bump version: {old_version} → {new_version}"
+commit = true          # ✅ necessário se push = true
+push = false            # faz push automático da tag e do commit
+tag = true
+tag_message = "v{new_version}"
+tag_name = "v{new_version}"
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    '^version = "{version}"',            # só o version do [project]
+    '^current_version = "{version}"',    # só o current_version do bumpver
+]
+
+[tool.taskipy.tasks]
+build = "python -m build"
+upload = "python -m twine upload dist/*"
+publish = "bumpver update --patch && task build && task upload && git push github --tags"
+#publish = {cmd="bumpver update --patch && git push github --tags", help="Publica no Pypi"}

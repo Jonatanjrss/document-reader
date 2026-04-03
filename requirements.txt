@@ -1,0 +1,2 @@
+loguru==0.7.3
+pdftotext==3.0.0
