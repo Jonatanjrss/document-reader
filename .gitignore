@@ -7,3 +7,6 @@ __pycache__/
 
 # Pycharm
 .idea/
+
+dist/
+src/document_reader.egg-info
