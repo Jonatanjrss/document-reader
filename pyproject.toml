@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "document-reader"
-version = "0.0.2"
+version = "0.0.3"
 description = "Um leitor de documentos em Python para extrair campos, baseado em expressões regulares"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -29,7 +29,7 @@ Homepage = "https://github.com/Jonatanjrss/document-reader"
 Issues = "https://github.com/Jonatanjrss/document-reader/issues"
 
 [tool.bumpver]
-current_version = "0.0.2"
+current_version = "0.0.3"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "Bump version: {old_version} → {new_version}"
 commit = true          # ✅ necessário se push = true
