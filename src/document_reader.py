@@ -17,8 +17,9 @@ class PDFReader:
 
     def extract(self, fields: List):
         found = []
+
         for field in fields:
-            mo = re.search(field.regex, self._pages[field.page])
+            mo = re.search(field.regex, clean(self._pages[field.page]))
             if mo:
                 found.append({field.name: mo.group()})
         return found
@@ -26,7 +27,7 @@ class PDFReader:
 
 class Field:
     def __init__(self, name, regex, page=None):
-        if page is None:
+        if not page:
             page = 0
         else:
             page = page - 1
